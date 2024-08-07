@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_teshruparelll_go_pipeline_sample_1723044870464-pr-trigger-input-set
+  identifier: Build_teshruparelll_go_pipeline_sample_1723044870464prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: GoApp
+  pipeline:
+    identifier: Build_teshruparelll_go_pipeline_sample_1723044870464
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
