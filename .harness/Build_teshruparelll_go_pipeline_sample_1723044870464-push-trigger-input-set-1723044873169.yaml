@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_teshruparelll_go_pipeline_sample_1723044870464-push-trigger-input-set
+  identifier: Build_teshruparelll_go_pipeline_sample_1723044870464pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: GoApp
+  pipeline:
+    identifier: Build_teshruparelll_go_pipeline_sample_1723044870464
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
