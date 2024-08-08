@@ -32,9 +32,9 @@ pipeline:
                   spec:
                     caching: true
                     connectorRef: account.DockerRepo
-                    repo: demo
+                    repo: hiteshreeruparell/demo
                     tags:
-                      - latest
+                      - go-pipeline-sample
                   timeout: ""
                   type: BuildAndPushDockerRegistry
           platform:
