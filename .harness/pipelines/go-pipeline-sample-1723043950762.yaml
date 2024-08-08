@@ -27,13 +27,6 @@ pipeline:
                   timeout: ""
                   type: Run
               - step:
-                  identifier: gotestcoverage
-                  name: go_test_coverage
-                  spec:
-                    command: go test -coverprofile=coverage.out ./...
-                  timeout: ""
-                  type: Run
-              - step:
                   identifier: dockerbuild
                   name: docker_build
                   spec:
