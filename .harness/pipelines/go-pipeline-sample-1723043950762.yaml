@@ -50,8 +50,8 @@ pipeline:
                   name: docker_build
                   spec:
                     caching: true
-                    connectorRef: <+input>
-                    repo: hello/world
+                    connectorRef: account.DockerRepo
+                    repo: demo
                     tags:
                       - latest
                   timeout: ""
