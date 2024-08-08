@@ -1,5 +1,5 @@
 pipeline:
-  name: Build go-pipeline-sample
+  name: Build_teshruparelll_go_pipeline_sample_1723044870464
   identifier: Build_teshruparelll_go_pipeline_sample_1723044870464
   projectIdentifier: GoApp
   orgIdentifier: default
@@ -9,25 +9,46 @@ pipeline:
         identifier: Build
         type: CI
         spec:
+          caching:
+            enabled: true
           cloneCodebase: true
           execution:
             steps:
               - step:
                   type: Run
-                  name: Echo Welcome Message
-                  identifier: Echo_Welcome_Message
+                  identifier: installgo
+                  name: Install Go
                   spec:
                     shell: Sh
-                    command: echo "Welcome to Harness CI"
+                    command: |-
+                      export PATH=$(go env GOPATH)/bin:$PATH
+                      go install golang.org/dl/go1.20@latest
+                      go1.20 download
               - step:
-                  type: BuildAndPushDockerRegistry
-                  name: BuildAndPushDockerRegistry_1
-                  identifier: BuildAndPushDockerRegistry_1
+                  type: Run
+                  identifier: build
+                  name: Build
                   spec:
-                    connectorRef: account.DockerRepo
-                    repo: demo
-                    tags:
-                      - hello
+                    shell: Sh
+                    command: |-
+                      export PATH=$(go env GOPATH)/bin:$PATH
+                      go1.20 build
+              - step:
+                  type: Run
+                  identifier: test
+                  name: Test
+                  spec:
+                    shell: Sh
+                    command: |-
+                      export PATH=$(go env GOPATH)/bin:$PATH
+                      go1.20 install github.com/jstemmer/go-junit-report/v2@latest
+                      go1.20 test -v | tee report.out
+                      cat report.out | go-junit-report -set-exit-code > report.xml
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - report.xml
           platform:
             os: Linux
             arch: Amd64
@@ -37,6 +58,6 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: account.Github
-        repoName: teshruparelll/go-pipeline-sample
+        connectorRef: YOUR_CODE_REPO_CONNECTOR_ID
+        repoName: YOUR_REPO_NAME
         build: <+input>
