@@ -14,7 +14,7 @@ spec:
         app: go-pipeline-sample
     spec:
       containers:
-      - image: gcr.io/heptio-images/ks-guestbook-demo:0.1
+      - image: teshapp
         name: go-pipeline-sample
         ports:
         - containerPort: 80
