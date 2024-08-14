@@ -80,10 +80,10 @@ pipeline:
           service:
             serviceRef: microservice
           environment:
-            environmentRef: dev
+            environmentRef: harnessdevenv
             deployToAll: false
             infrastructureDefinitions:
-              - identifier: K8s
+              - identifier: harness_k8sinfra
           execution:
             steps:
               - stepGroup:
