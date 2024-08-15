@@ -4,27 +4,6 @@ metadata:
   name: go-pipeline-sample
 spec:
   replicas: 3
-  revisionHistoryLimit: 3
-  selector:
-    matchLabels:
-      app: go-pipeline-sample
-  template:
-    metadata:
-      labels:
-        app: go-pipeline-sample
-    spec:
-      containers:
-      - image: teshapp
-        name: go-pipeline-sample
-        ports:
-        - containerPort: 80
-
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: go-pipeline-sample
-spec:
-  replicas: 3
   selector:
     matchLabels:
       app: go-pipeline-sample
@@ -35,7 +14,7 @@ spec:
     spec:
       containers:
       - name: go-pipeline-sample
-        image: hiteshreeruparell/teshapp:latest
+        image: hiteshreeruparell/demo
         ports:
         - containerPort: 5000
 ---
