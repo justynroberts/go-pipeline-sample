@@ -13,7 +13,7 @@ spec:
         app: go-pipeline-sample
     spec:
       containers:
-      - name: go-pipeline-sample
+      - name: goapp
         image: hiteshreeruparell/demo
         ports:
         - containerPort: 5000
@@ -21,7 +21,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: microservice
+  name: goapp
 spec:
   selector:
     app: go-pipeline-sample
