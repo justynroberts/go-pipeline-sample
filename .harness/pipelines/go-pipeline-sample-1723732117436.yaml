@@ -34,6 +34,7 @@ pipeline:
                     repo: hiteshreeruparell/demo
                     tags:
                       - goapp
+                      - latest
                     caching: true
                   timeout: ""
                   type: BuildAndPushDockerRegistry
